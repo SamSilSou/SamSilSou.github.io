@@ -1,0 +1,9 @@
+body {
+  background-image: url('imagem.jpg'); /* Substitua por 'caminho/para/sua/imagem.jpg' */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh; /* Altura da tela 100% */
+  margin: 0; /* Remover margens padrão */
+  padding: 0; /* Remover preenchimento padrão */
+}
