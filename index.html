@@ -9,13 +9,14 @@
 
         function copyTextToClipboard() {
             const texto = "Este é o texto que será copiado!";
+
             const textarea = document.createElement('textarea');
             textarea.value = texto;
             document.body.appendChild(textarea);
             textarea.select();
             document.execCommand('copy');
             document.body.removeChild(textarea);
-            alert("Texto copiado: " + texto);
+            alert("Ixi, tu copiou alguma coisa... 🤔😂");
         }
 
         document.addEventListener('DOMContentLoaded', (event) => {
