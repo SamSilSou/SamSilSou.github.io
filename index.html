@@ -6,13 +6,6 @@
     <title>Vídeo em Tela Cheia</title>
     <link rel="stylesheet" href="styles.css">
     <script>
-        function requestFullScreen() {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen().catch(err => {
-                    alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
-                });
-            }
-        }
 
         function copyTextToClipboard() {
             const texto = "Este é o texto que será copiado!";
@@ -26,7 +19,6 @@
         }
 
         document.addEventListener('DOMContentLoaded', (event) => {
-            requestFullScreen();
             document.body.addEventListener('click', copyTextToClipboard);
         });
     </script>
