@@ -5,6 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vídeo em Tela Cheia</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.body.addEventListener('click', toggleFullScreen);
+        });
+    </script>
 </head>
 <body>
     <video autoplay muted loop>
