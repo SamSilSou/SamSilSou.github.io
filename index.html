@@ -6,26 +6,34 @@
     <title>Vídeo em Tela Cheia</title>
     <link rel="stylesheet" href="styles.css">
     <script>
-        function toggleFullScreen() {
+        function requestFullScreen() {
             if (!document.fullscreenElement) {
                 document.documentElement.requestFullscreen().catch(err => {
                     alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
                 });
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                }
             }
         }
 
+        function copyTextToClipboard() {
+            const texto = "Este é o texto que será copiado!";
+            const textarea = document.createElement('textarea');
+            textarea.value = texto;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert("Texto copiado: " + texto);
+        }
+
         document.addEventListener('DOMContentLoaded', (event) => {
-            document.body.addEventListener('click', toggleFullScreen);
+            requestFullScreen();
+            document.body.addEventListener('click', copyTextToClipboard);
         });
     </script>
 </head>
 <body>
     <video autoplay muted loop>
-        <source src="video.mp4" type="video/mp4">
+        <source src="seu-video.mp4" type="video/mp4">
         Seu navegador não suporta a tag de vídeo.
     </video>
 </body>
