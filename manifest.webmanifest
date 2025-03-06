@@ -1,15 +1,17 @@
 {
-    "name": "My project",
-    "short_name": "My project",
-    "start_url": "index.html",
-    "display": "fullscreen",
-    "background_color": "#231F20",
-    "theme_color": "#000",
-    "description": "Teste App",
-    "icons": [{
-      "src": "TemplateData/icons/unity-logo-dark.png",
+  "name": "My Project",
+  "short_name": "My Project",
+  "start_url": "./index.html",   // Use './index.html' para garantir que o caminho esteja correto
+  "display": "standalone",       // 'fullscreen' pode não ser ideal em todos os casos
+  "background_color": "#231F20",
+  "theme_color": "#000000",      // Certifique-se de usar um código de cor válido
+  "description": "Teste App",
+  "icons": [
+    {
+      "src": "TemplateData/icons/unity-logo-dark.png",  // Verifique se o caminho está correto
       "sizes": "144x144",
       "type": "image/png",
       "purpose": "any maskable"
-    }]
-  }
+    }
+  ]
+}
