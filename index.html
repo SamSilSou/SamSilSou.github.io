@@ -33,7 +33,7 @@
 </head>
 <body>
 
-    <h1>Bem-vindo ao Site 2</h1>
+    <h1>Bem-vindo ao Site 3</h1>
     <button id="fullscreen-btn">Entrar em Tela Cheia</button>
     
     <div id="error-message"></div>
@@ -42,7 +42,15 @@
         // Função para verificar se o navegador é o Safari
         function isSafari() {
             var ua = navigator.userAgent.toLowerCase();
-            return /safari/.test(ua) && !/chrome/.test(ua);
+            // Verifica se é Safari e não é Chrome
+            return /safari/.test(ua) && !/chrome/.test(ua) && !/crios/.test(ua);
+        }
+
+        // Função para verificar se é Chrome (não confundir com Safari)
+        function isChrome() {
+            var ua = navigator.userAgent.toLowerCase();
+            // Verifica se é Chrome no Android
+            return /chrome/.test(ua) && !/crios/.test(ua);
         }
 
         // Caso não seja o Safari, mostrar uma mensagem de erro e bloquear o conteúdo
