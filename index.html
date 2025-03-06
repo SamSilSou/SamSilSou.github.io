@@ -125,15 +125,20 @@
 
 
       
-    function toggleFullScreen() {
-        if (!document.fullscreenElement) {
-            document.documentElement.requestFullscreen().catch(err => {
-                console.log(`Erro ao entrar em tela cheia: ${err.message}`);
-            });
-        }
-    }
+      function toggleFullScreen() {
+            let elem = document.documentElement; // Pega o elemento principal do site
 
-    document.addEventListener("click", toggleFullScreen);
+            if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.webkitRequestFullscreen) { // Suporte para Safari
+                    elem.webkitRequestFullscreen();
+                }
+            }
+        }
+
+        document.addEventListener("click", toggleFullScreen);
+        document.addEventListener("touchend", toggleFullScreen); // Para celulares
 
 
 
