@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modo Tela Cheia</title>
+    <title>Somente Safari</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -24,15 +24,30 @@
         #fullscreen-btn:hover {
             background-color: #45a049;
         }
+
+        #error-message {
+            color: red;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
 
-    <h1>Ativar Modo Tela Cheia</h1>
+    <h1>Bem-vindo ao Site</h1>
     <button id="fullscreen-btn">Entrar em Tela Cheia</button>
+    
+    <div id="error-message"></div>
 
     <script>
-        // Função para entrar em tela cheia
+        // Detectando se o navegador é o Safari
+        var isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
+
+        // Caso não seja o Safari, mostrar uma mensagem de erro e bloquear o conteúdo
+        if (!isSafari) {
+            document.body.innerHTML = "<h1>Este site só funciona no Safari!</h1><p>Por favor, abra o site no navegador Safari para continuar.</p>";
+        }
+
+        // Função para entrar em tela cheia (apenas se for Safari)
         function enterFullscreen() {
             if (document.documentElement.requestFullscreen) {
                 document.documentElement.requestFullscreen();
@@ -45,8 +60,14 @@
             }
         }
 
-        // Ação do botão para ativar o fullscreen
-        document.getElementById('fullscreen-btn').addEventListener('click', enterFullscreen);
+        // Só habilitar o botão de tela cheia se for Safari
+        if (isSafari) {
+            document.getElementById('fullscreen-btn').addEventListener('click', enterFullscreen);
+        } else {
+            // Caso não seja Safari, mostrar a mensagem de erro
+            document.getElementById('fullscreen-btn').disabled = true;
+            document.getElementById('error-message').textContent = "A função de tela cheia está disponível apenas no Safari.";
+        }
     </script>
 
 </body>
