@@ -6,8 +6,38 @@
     <title>Unity Web Player | My project</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela Cheia</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        #fullscreen-btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+
+
   </head>
   <body>
+
+
+
+    <h1>Toque no botão para ativar a tela cheia</h1>
+    <button id="fullscreen-btn">Ativar Tela Cheia</button>
+
+
+
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
@@ -24,6 +54,21 @@
       </div>
     </div>
     <script>
+
+
+document.getElementById("fullscreen-btn").addEventListener("click", function() {
+            let elem = document.documentElement;
+
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) { // Suporte para Safari
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { // Suporte para Internet Explorer
+                elem.msRequestFullscreen();
+            }
+        });
+
+
       var canvas = document.querySelector("#unity-canvas");
 
       // Shows a temporary message banner/ribbon for a few seconds, or
