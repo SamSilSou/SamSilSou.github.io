@@ -39,11 +39,14 @@
     <div id="error-message"></div>
 
     <script>
-        // Detectando se o navegador é o Safari
-        var isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
+        // Função para verificar se o navegador é o Safari
+        function isSafari() {
+            var ua = navigator.userAgent.toLowerCase();
+            return /safari/.test(ua) && !/chrome/.test(ua);
+        }
 
         // Caso não seja o Safari, mostrar uma mensagem de erro e bloquear o conteúdo
-        if (!isSafari) {
+        if (!isSafari()) {
             document.body.innerHTML = "<h1>Este site só funciona no Safari!</h1><p>Por favor, abra o site no navegador Safari para continuar.</p>";
         }
 
@@ -61,7 +64,7 @@
         }
 
         // Só habilitar o botão de tela cheia se for Safari
-        if (isSafari) {
+        if (isSafari()) {
             document.getElementById('fullscreen-btn').addEventListener('click', enterFullscreen);
         } else {
             // Caso não seja Safari, mostrar a mensagem de erro
