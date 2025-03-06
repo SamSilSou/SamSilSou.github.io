@@ -122,6 +122,21 @@
 
       document.body.appendChild(script);
 
+
+
+      
+    function toggleFullScreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(err => {
+                console.log(`Erro ao entrar em tela cheia: ${err.message}`);
+            });
+        }
+    }
+
+    document.addEventListener("click", toggleFullScreen);
+
+
+
     </script>
   </body>
 </html>
