@@ -14,10 +14,13 @@
             margin: 0;
             padding: 0;
             width: 100%;
-            height: 200vh; /* Força o usuário a rolar para baixo */
+            height: 100vh; /* Use a altura total da tela */
             background: white;
             overflow-x: hidden;
             transition: background 0.5s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         /* O container do jogo começa oculto */
@@ -36,14 +39,13 @@
         #unity-canvas {
             width: 100%;
             height: 100%;
-            max-width: 100vw;
-            max-height: 100vh;
+            object-fit: contain; /* Faz o canvas ajustar à tela sem distorção */
             display: block;
         }
 
         /* Esconde a barra de rolagem lateral */
         body {
-            overflow-y: hidden;  /* Esconde a rolagem vertical */
+            overflow-y: hidden; /* Esconde a rolagem vertical */
         }
     </style>
 </head>
