@@ -16,7 +16,8 @@
             width: 100%;
             height: 100vh; /* Use a altura total da tela */
             background: white;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Desabilita rolagem horizontal */
+            overflow-y: hidden; /* Desabilita rolagem vertical */
             transition: background 0.5s;
             display: flex;
             justify-content: center;
@@ -45,7 +46,7 @@
 
         /* Esconde a barra de rolagem lateral */
         body {
-            overflow-y: hidden; /* Esconde a rolagem vertical */
+            overflow: hidden; /* Desabilita qualquer tipo de rolagem */
         }
     </style>
 </head>
