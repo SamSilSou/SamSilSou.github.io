@@ -69,20 +69,17 @@
         history.scrollRestoration = "manual"; // Impede o Safari de lembrar o scroll
         window.scrollTo(0, 0);
 
-        // Aguarda o usuário rolar para baixo
-        function checkScroll() {
-            if (window.scrollY > 50) { // Quando a barra inferior sumir...
-                document.body.style.background = "black"; // Troca o fundo para preto
-                document.body.style.height = "100vh"; // Impede rolagem para cima
-                document.body.style.overflow = "hidden"; // Bloqueia rolagem
-                document.getElementById("unity-container").style.display = "flex"; // Exibe o jogo
-                loadUnity(); // Inicia o Unity
+        // Função para rolar automaticamente
+        function autoScroll() {
+            window.scrollBy(0, 5);  // Rolagem suave para baixo a cada 5px
+            if (window.scrollY < window.innerHeight * 2) {  // Continua rolando até atingir 2x a altura da tela
+                requestAnimationFrame(autoScroll);  // Continua a rolagem
             } else {
-                requestAnimationFrame(checkScroll);
+                loadUnity();  // Quando a rolagem terminar, carrega o jogo
             }
         }
 
-        requestAnimationFrame(checkScroll);
+        requestAnimationFrame(autoScroll); // Inicia a rolagem automática
 
         function loadUnity() {
             var canvas = document.querySelector("#unity-canvas");
