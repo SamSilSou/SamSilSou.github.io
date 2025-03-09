@@ -72,6 +72,10 @@
 
 
         function loadUnity() {
+
+            document.documentElement.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden';
+            
             var canvas = document.querySelector("#unity-canvas");
             var buildUrl = "Build";
             var loaderUrl = buildUrl + "/SamSilSou.github.io.loader.js";
