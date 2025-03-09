@@ -55,7 +55,7 @@
 
         // Função para rolar automaticamente até um ponto específico
         function autoScroll() {
-            window.scrollBy(0, 5);  // Rolagem suave para baixo a cada 5px
+            window.scrollBy(0, 25);  // Rolagem suave para baixo a cada 5px
             if (window.scrollY < window.innerHeight * 2) {  // Continua rolando até atingir 2x a altura da tela
                 requestAnimationFrame(autoScroll);  // Continua a rolagem
             } else {
