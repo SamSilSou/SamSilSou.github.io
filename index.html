@@ -7,43 +7,47 @@
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <link rel="manifest" href="manifest.webmanifest">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <style>
-        /* Garante que o canvas do Unity ocupe toda a tela */
+        /* Ajusta para ocupar apenas a área visível */
         html, body {
             margin: 0;
             padding: 0;
             width: 100%;
-            height: 100%;
+            height: 100vh; /* Apenas a altura visível */
             overflow: hidden;
             background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         #unity-container {
-            position: absolute;
-            width: 100vw;
-            height: 100vh;
-            top: 0;
-            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         #unity-canvas {
             width: 100%;
             height: 100%;
+            max-width: 100vw; /* Garante que não ultrapasse a largura visível */
+            max-height: 100vh; /* Garante que não ultrapasse a altura visível */
             display: block;
             background: black;
         }
 
         #unity-loading-bar {
             position: absolute;
-            width: 100%;
             bottom: 20px;
+            width: 50%;
             text-align: center;
         }
 
         #unity-progress-bar-empty {
-            width: 50%;
-            margin: auto;
+            width: 100%;
             background: gray;
             height: 10px;
             border-radius: 5px;
@@ -54,20 +58,6 @@
             height: 100%;
             background: limegreen;
             border-radius: 5px;
-        }
-
-        #fullscreen-btn {
-            position: absolute;
-            bottom: 50px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
         }
     </style>
 </head>
@@ -81,8 +71,6 @@
             </div>
         </div>
     </div>
-
-    <button id="fullscreen-btn">Entrar em Tela Cheia</button>
 
     <script>
         // Habilita Service Worker para cache (Progressive Web App)
@@ -129,7 +117,7 @@
         };
         document.body.appendChild(script);
 
-        // Função para ajustar o canvas ao tamanho da tela
+        // Ajusta o tamanho do canvas dinamicamente à área visível
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
@@ -137,19 +125,6 @@
 
         window.addEventListener("resize", resizeCanvas);
         resizeCanvas();
-
-        // Ativar modo de tela cheia
-        document.getElementById("fullscreen-btn").addEventListener("click", function () {
-            if (canvas.requestFullscreen) {
-                canvas.requestFullscreen();
-            } else if (canvas.mozRequestFullScreen) {
-                canvas.mozRequestFullScreen();
-            } else if (canvas.webkitRequestFullscreen) {
-                canvas.webkitRequestFullscreen();
-            } else if (canvas.msRequestFullscreen) {
-                canvas.msRequestFullscreen();
-            }
-        });
 
     </script>
 
