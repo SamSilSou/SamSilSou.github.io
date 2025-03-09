@@ -53,29 +53,27 @@
         history.scrollRestoration = "manual"; // Impede o Safari de lembrar o scroll
         window.scrollTo(0, 0);
 
-        // Função para rolar automaticamente até um ponto específico
-        function autoScroll() {
-            window.scrollBy(0, 25);  // Rolagem suave para baixo a cada 5px
-            if (window.scrollY < window.innerHeight * 2) {  // Continua rolando até atingir 2x a altura da tela
-                requestAnimationFrame(autoScroll);  // Continua a rolagem
-            } else {
+        // Função para aguardar o usuário rolar para baixo
+        function checkScroll() {
+            if (window.scrollY > 50) { // Quando a rolagem atingir o valor de 50px...
                 document.body.style.background = "black"; // Troca o fundo para preto
                 document.body.style.height = "100vh"; // Impede rolagem para cima
                 document.body.style.overflow = "hidden"; // Bloqueia rolagem
                 document.getElementById("unity-container").style.display = "flex"; // Exibe o jogo
                 loadUnity(); // Inicia o Unity
+            } else {
+                requestAnimationFrame(checkScroll); // Continua verificando a rolagem
             }
         }
 
-        // Inicia a rolagem automática
-        requestAnimationFrame(autoScroll);
-
+        // Inicia a verificação de rolagem assim que a página carrega
+        requestAnimationFrame(checkScroll);
 
         function loadUnity() {
 
             document.documentElement.style.overflow = 'hidden';
             document.body.style.overflow = 'hidden';
-            
+
             var canvas = document.querySelector("#unity-canvas");
             var buildUrl = "Build";
             var loaderUrl = buildUrl + "/SamSilSou.github.io.loader.js";
